@@ -1,4 +1,4 @@
-name: feature_add
+name: feature
 description: A new brick created with the Mason CLI.
 
 # The following defines the brick repository url.
@@ -26,8 +26,8 @@ environment:
 #  * a list of values (enums only)
 #  * an optional separator (list only)
 vars:
-  name:
+  feature_name:
     type: string
-    description: Your name
-    default: Dash
-    prompt: What is your name?
+    description: The name of the feature to be created.
+    default: example_feature
+    prompt: What is your feature name?

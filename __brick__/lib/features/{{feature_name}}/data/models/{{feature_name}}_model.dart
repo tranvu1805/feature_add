@@ -1,18 +1,21 @@
-import '../../../../../features/{{feature_name}}/domain/entities/{{feature_name}}.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{feature_name.snakeCase()}}/domain/domain.dart';
 import 'package:equatable/equatable.dart';
 
-class {{feature_name}}Model extends Equatable {
+class {{feature_name.pascalCase()}}Model extends Equatable {
 
-  const {{feature_name}}Model({});
-  const {{feature_name}}Model.empty()
+  const {{feature_name.pascalCase()}}Model({});
+  const {{feature_name.pascalCase()}}Model.empty()
       : ;
 
-  const {{feature_name}}Model.toCreate()
+  const {{feature_name.pascalCase()}}Model.toCreate()
       : this();
 
-  {{feature_name}} toEntity() => {{feature_name}}();
+  const {{feature_name.pascalCase()}}Model.toUpdate()
+      : this();
 
-  {{feature_name}}Model copyWith({}) => {{feature_name}}Model();
+  {{feature_name.pascalCase()}} toEntity() => {{feature_name.pascalCase()}}();
+
+  {{feature_name.pascalCase()}}Model copyWith({}) => {{feature_name.pascalCase()}}Model();
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -24,7 +27,7 @@ class {{feature_name}}Model extends Equatable {
     return map;
   }
 
-{{feature_name}}Model.fromJson(dynamic json)
+  {{feature_name.pascalCase()}}Model.fromJson(dynamic json)
       : this();
 
   @override

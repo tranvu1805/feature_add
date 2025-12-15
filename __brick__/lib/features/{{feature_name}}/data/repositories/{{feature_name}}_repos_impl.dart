@@ -1,71 +1,68 @@
-import '../../../../../core/common/common_local_data_source.dart';
-import '../../../../../core/utils/network/api_service.dart';
-import '../../../../../core/utils/helper/type_definition.dart';
-import '../../../../../features/{{feature_name}}/data/data_source/{{feature_name}}_remote_data_source.dart';
-import '../../../../../features/{{feature_name}}/data/models/{{feature_name}}_model.dart';
-import '../../../../../features/{{feature_name}}/domain/entities/{{feature_name}}.dart';
-import '../../../../../features/{{feature_name}}/domain/repositories/{{feature_name}}_repos.dart';
-import '../../../../../features/{{feature_name}}/domain/use_cases/create_{{feature_name}}_use_case.dart';
-import '../../../../../features/{{feature_name}}/domain/use_cases/update_{{feature_name}}_use_case.dart';
+import 'package:{{project_name.snakeCase()}}/core/data_source/common_local_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/core/network/api_service.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/helper/type_definition.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{feature_name.snakeCase()}}/data/data.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{feature_name.snakeCase()}}/domain/domain.dart';
 
-class {{feature_name}}ReposImpl implements {{feature_name}}Repos {
-  final {{feature_name}}RemoteDataSource _remoteDataSource;
+class {{feature_name.pascalCase()}}ReposImpl implements {{feature_name.pascalCase()}}Repos {
+  final {{feature_name.pascalCase()}}RemoteDataSource _remoteDataSource;
   final CommonLocalDataSource _authLocalDataSource;
 
-  {{feature_name}}ReposImpl({
-    required {{feature_name}}RemoteDataSource remoteDataSource,
+  {{feature_name.pascalCase()}}ReposImpl({
+    required {{feature_name.pascalCase()}}RemoteDataSource remoteDataSource,
     required CommonLocalDataSource commonLocalDataSource,
   }) : _remoteDataSource = remoteDataSource,
        _authLocalDataSource = commonLocalDataSource;
 
   @override
-  ResultFuture<List<{{feature_name}}>> get{{feature_name}}s({required int page}) async {
-    return ApiHelper.handle(() async {
+  ResultFuture<List<{{feature_name.pascalCase()}}>> get{{feature_name.pascalCase()}}s({required int page}) async {
+    return ApiService.handle(() async {
       final token = await _authLocalDataSource.getToken();
-      final models = await _remoteDataSource.get{{feature_name}}s(
+      final models = await _remoteDataSource.get{{feature_name.pascalCase()}}s(
         token: token,
         page: page,
       );
-      return models.map<{{feature_name}}>((model) => model.toEntity()).toList();
+      return models.map<{{feature_name.pascalCase()}}>((model) => model.toEntity()).toList();
     });
   }
 
   @override
-  ResultVoid create{{feature_name}}({required Create{{feature_name}}Params params}) {
-    return ApiHelper.handle(() async {
-      final model = {{feature_name}}Model();
+  ResultVoid create{{feature_name.pascalCase()}}({required Create{{feature_name.pascalCase()}}UseCaseParams params}) {
+    return ApiService.handle(() async {
+      final model = {{feature_name.pascalCase()}}Model.toCreate();
       final token = await _authLocalDataSource.getToken();
-      await _remoteDataSource.create{{feature_name}}(
-        {{feature_name}}: model,
+      await _remoteDataSource.create{{feature_name.pascalCase()}}(
+        {{feature_name.camelCase()}}: model,
         token: token,
       );
     });
   }
 
   @override
-  ResultVoid update{{feature_name}}({required Update{{feature_name}}Params params}) {
-    return ApiHelper.handle(() async {
-      final model = {{feature_name}}Model();
+  ResultVoid update{{feature_name.pascalCase()}}({required Update{{feature_name.pascalCase()}}UseCaseParams params}) {
+    return ApiService.handle(() async {
+      final model = {{feature_name.pascalCase()}}Model.toUpdate();
       final token = await _authLocalDataSource.getToken();
-      await _remoteDataSource.update{{feature_name}}(
-        {{feature_name}}: model,
+      await _remoteDataSource.update{{feature_name.pascalCase()}}(
+        {{feature_name.camelCase()}}: model,
         token: token,
       );
     });
   }
 
   @override
-  ResultVoid delete{{feature_name}}({required String id}) {
-    return ApiHelper.handle(() async {
+  ResultVoid delete{{feature_name.pascalCase()}}({required String id}) {
+    return ApiService.handle(() async {
       final token = await _authLocalDataSource.getToken();
-      await _remoteDataSource.delete{{feature_name}}(id: id, token: token);
+      await _remoteDataSource.delete{{feature_name.pascalCase()}}(id: id, token: token);
     });
   }
-
-  Future<{{feature_name}}Model> get{{feature_name}}({required String id}) async {
-    return ApiHelper.handle(() async {
+  @override
+  ResultFuture<{{feature_name.pascalCase()}}> get{{feature_name.pascalCase()}}({required String id}) async {
+    return ApiService.handle(() async {
       final token = await _authLocalDataSource.getToken();
-      await _remoteDataSource.get{{feature_name}}(id: id, token: token);
+      final model = await _remoteDataSource.get{{feature_name.pascalCase()}}(id: id, token: token);
+      return model.toEntity();
     });
   }
 }
