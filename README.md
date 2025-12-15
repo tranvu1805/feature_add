@@ -22,8 +22,13 @@ mason add feature
 mason make feature
 ```
 
-You'll be prompted for:
-- `feature_name`: Name of your feature (e.g., `user`, `product`, `order`)
+## Variables ✨
+
+| Variable       | Description             | Default         | Type     |
+|----------------|-------------------------|-----------------|----------|
+| `feature_name` | The name of the feature | example_feature | `string` |
+
+**Note:** The `project_name` variable is automatically extracted from your `pubspec.yaml` by the pre-generation hook.
 
 ## Important Notes
 
