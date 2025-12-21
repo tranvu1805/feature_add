@@ -25,7 +25,7 @@ mason make feature
 Or add from Git:
 
 ```bash
-mason add template --git-url https://github.com/tranvu1805/feature_add.git
+mason add feature --git-url https://github.com/tranvu1805/feature_add.git
 ```
 
 ## Variables ✨
