@@ -22,6 +22,12 @@ mason add feature
 mason make feature
 ```
 
+Or add from Git:
+
+```bash
+mason add template --git-url https://github.com/tranvu1805/feature_add.git
+```
+
 ## Variables ✨
 
 | Variable       | Description             | Default         | Type     |
