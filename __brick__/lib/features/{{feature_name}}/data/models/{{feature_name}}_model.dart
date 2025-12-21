@@ -7,11 +7,9 @@ class {{feature_name.pascalCase()}}Model extends Equatable {
   const {{feature_name.pascalCase()}}Model.empty()
       : ;
 
-  const {{feature_name.pascalCase()}}Model.toCreate()
-      : this();
+  const {{feature_name.pascalCase()}}Model.toCreate({});
 
-  const {{feature_name.pascalCase()}}Model.toUpdate()
-      : this();
+  const {{feature_name.pascalCase()}}Model.toUpdate({});
 
   {{feature_name.pascalCase()}} toEntity() => {{feature_name.pascalCase()}}();
 
