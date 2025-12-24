@@ -4,8 +4,7 @@ import 'package:equatable/equatable.dart';
 class {{feature_name.pascalCase()}}Model extends Equatable {
 
   const {{feature_name.pascalCase()}}Model({});
-  const {{feature_name.pascalCase()}}Model.empty()
-      : ;
+  const {{feature_name.pascalCase()}}Model.empty({});
 
   const {{feature_name.pascalCase()}}Model.toCreate({});
 
